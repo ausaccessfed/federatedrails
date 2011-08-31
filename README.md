@@ -31,10 +31,12 @@ Once this is done execute the supplied generator
 
 Subject should be the name of your subject class you can change this to say User if this better suits your application.
 
-You'll then need to add 
+You'll then need to add
+
     acts_as_federated
     
 to your application_controller.rb. This will authenticate all controller requests except supplied by the engine. To disable use:
+
     skip_before_filter :ensure_valid_subject 
 
 Then simply continue with Bundler as normal.
