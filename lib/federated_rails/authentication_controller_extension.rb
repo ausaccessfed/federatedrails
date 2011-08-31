@@ -1,5 +1,5 @@
 module FederatedRails
-	  module ActionControllerExtension
+    module ActionControllerExtension
     module ClassMethods
       def acts_as_federated
         # At this point, 'self' is the ApplicationController

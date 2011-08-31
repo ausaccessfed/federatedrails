@@ -3,9 +3,9 @@
 # to suit the explict needs of the host application
 
 FederatedRails::SecurityManager.class_eval do
-	
-	def subject
-		warden.user
-	end
+  
+  def subject
+    warden.user
+  end
 
 end
