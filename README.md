@@ -9,7 +9,7 @@ Concepts
 * Subject - Security specific view of an entity capable of being authenticated to an application. It can be a human being, a third-party process, a server etc. Also referred to as ‘user’.
 * Principal - A subjects uniquely identifying attribute. This is generally mapped to the federation attribute eduPersonTargetedID. For non federated applications this is commonly referred to as a ‘username’
 * Credentials - Data used to verify identity at session establishment. For integrators this is the associated SAML assertion and is represented by a unique internal sessionID. For non federated applications this is usually a ‘password’
- * Attributes - A subjects identifying attributes. Names, email, entitlements etc.For non federated applications these need to manually entered. For federated applications they are in many cases automatically supplied.
+* Attributes - A subjects identifying attributes. Names, email, entitlements etc.For non federated applications these need to manually entered. For federated applications they are in many cases automatically supplied.
 
 Documentation
 -------------
