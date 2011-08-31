@@ -4,6 +4,7 @@ class FederatedRails::AuthController < ApplicationController
   skip_before_filter :ensure_valid_subject
 
   def login
+    # Integrates with Shibboleth NativeSPSessionCreationParameters as per https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPSessionCreationParameters
     login_url = "#{Rails.application.config.federation.ssoendpoint}?target=#{url_for(:controller => 'auth', :action => 'federation_login')}"
     if Rails.application.config.federation.automatelogin
       redirect_to login_url
