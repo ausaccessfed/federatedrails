@@ -28,6 +28,7 @@ Alternatively use the bundler git syntax.
 Once this is done execute the supplied generator
 
 rails g federated_rails:install Subject
+
 Subject should be the name of your subject class you can change this to say User if this better suits your application.
 
 Then simply continue with Bundler as normal.
