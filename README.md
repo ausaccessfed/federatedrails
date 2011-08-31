@@ -21,13 +21,13 @@ This isn't currently published to a gem repository given early release status.
 
 Clone the repository to your local disk and in your Gemfile add:
 
-gem 'federated_rails', '0.1.0', :path => "yourpath/federated_rails"
+		gem 'federated_rails', '0.1.0', :path => "yourpath/federated_rails"
 
 Alternatively use the bundler git syntax. 
 
 Once this is done execute the supplied generator
 
-rails g federated_rails:install Subject
+		rails g federated_rails:install Subject
 
 Subject should be the name of your subject class you can change this to say User if this better suits your application.
 
