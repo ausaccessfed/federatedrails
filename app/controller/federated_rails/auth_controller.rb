@@ -4,12 +4,13 @@ class FederatedRails::AuthController < ApplicationController
   skip_before_filter :ensure_valid_subject
 
   def login
+    login_url = "#{Rails.application.config.federation.ssoendpoint}?target=#{url_for(:controller => 'auth', :action => 'federation_login')}"
     if Rails.application.config.federation.automatelogin
-      redirect_to "#{Rails.application.config.federation.ssoendpoint}?target=#{url_for(:controller => 'auth', :action => 'federation_login')}"
+      redirect_to login_url
       return
     end
 
-    @spsession_url = "#{Rails.application.config.federation.ssoendpoint}?target=#{url_for(:controller => 'auth', :action => 'federation_login')}"
+    @spsession_url = login_url
   end
 
   def logout
