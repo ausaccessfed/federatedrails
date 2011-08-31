@@ -1,0 +1,14 @@
+class Create<%= model %>s < ActiveRecord::Migration
+  def self.up
+    create_table :<%= model.downcase %>s do |t|
+      t.string :principal
+      t.boolean :enabled, :default => false
+
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :<%= model.downcase %>s
+  end
+end

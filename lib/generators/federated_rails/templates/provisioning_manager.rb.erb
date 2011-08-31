@@ -1,0 +1,23 @@
+
+# This allows us to extend how <%= model %> is provisioned and updated
+# to suit the explict needs of the host application
+
+FederatedRails::ProvisioningManager.module_eval do
+	
+	# Customize <%= model %> management within production deployment
+
+	# def provision( <%= model.downcase %> )
+	# end
+
+	# def update ( <%= model.downcase %> )
+	# end
+
+	# Customize <%= model %> management within development deployment
+	
+	# def provision_development ( <%= model.downcase %> )
+	# end
+
+	# def update_development ( <%= model.downcase %> )
+	# end
+
+end

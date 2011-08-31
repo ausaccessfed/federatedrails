@@ -1,0 +1,33 @@
+<h1>Secure content</h1>
+<p>Congratulations, you have successfully authenticated and been granted access to the secure content</p>
+
+Welcome <%= security_manager.subject.principal %>!!
+
+<br>
+<%= link_to "Logout", :logout %>
+<br><br>
+<h2>Currently provisioned users</h2>
+
+<% @subjects.each do |s| %>
+  <h3>Principal: <%= s.principal %> </h3>
+  <h4>Session Records</h4>
+  <% s.session_records.each do |sr| %>
+  	ID: <%= sr.id %> <br>
+        Credential: <%= sr.credential %><br>
+	Remote Host: <%= sr.remote_host %><br>
+	User Agent: <%= sr.user_agent %> <br>
+	Established: <%= sr.created_at %> <br>
+  Class: <%= s.class %> <br><br>
+  <% end %>
+
+  <br><br>
+<% end %>
+<br><br>
+<h2>Headers</h2>
+<table border="1">
+<% for header in request.env %>
+  <tr>
+    <td><%=header[0]%></td><td><%=header[1]%></td>    
+  </tr>
+<% end %>
+</table>

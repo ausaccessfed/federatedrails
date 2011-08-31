@@ -1,0 +1,11 @@
+problem ? [troll]
+
+<br>
+<h2>Headers</h2>
+<table border="1">
+<% for header in request.env %>
+  <tr>
+    <td><%=header[0]%></td><td><%=header[1]%></td>    
+  </tr>
+<% end %>
+</table>
