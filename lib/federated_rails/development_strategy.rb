@@ -22,6 +22,11 @@ module FederatedRails
         subject = host_subject.find_or_initialize_by_principal(params[:principal])
         
         if subject.new_record?
+          unless Rails.application.config.federation.autoprovision
+            logger.error 'Authentication Error - Automatic provisioning is disabled in configuration'
+            return fail! 'Authentication Error - Automatic provisioning is disabled in configuration'
+          end
+
           logger.info "Creating new subject for principal #{subject.principal}"
 
           # The default implementation simply stores the principal

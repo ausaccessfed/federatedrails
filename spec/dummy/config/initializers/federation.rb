@@ -6,7 +6,7 @@ Dummy::Application.instance_eval do
   federation.automatelogin = false
   federation.federationactive = true
   federation.developmentactive = true
-  federation.autoprovision = false
+  federation.autoprovision = true
   federation.subject = 'Subject'
 
   # SP session init endpoint

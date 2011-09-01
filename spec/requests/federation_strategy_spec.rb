@@ -62,6 +62,7 @@ describe FederatedRails::FederationStrategy do
 
     it 'when the subject does not exist ensure it is provisioned has a session record created and returns success' do
       Rails.application.config.federation.federationactive = true
+      Rails.application.config.federation.autoprovision = true
       Rails.application.config.federation.subject = 'Subject'
       Rails.application.config.federation.attributes = false
 
@@ -83,6 +84,22 @@ describe FederatedRails::FederationStrategy do
       session_record.credential.should eq '12345678'
       session_record.remote_host.should eq 'http://test.host'
       session_record.user_agent.should eq 'test browser'
+    end
+
+    it 'when the subject does not exist and autoprovision is disabled ensure failure' do
+      Rails.application.config.federation.federationactive = true
+      Rails.application.config.federation.autoprovision = false
+      Rails.application.config.federation.subject = 'Subject'
+      Rails.application.config.federation.attributes = false
+
+      get "/login", nil, {  'HTTP_PERSISTENT_ID' => 'http://test.host/idp!http://test.host/sp!12345', 
+                            'HTTP_SHIB_SESSION_ID' => '12345678',
+                            'HTTP_X_FORWARDED_FOR' => 'http://test.host',
+                            'HTTP_USER_AGENT' => 'test browser' }
+
+      lambda { subject.authenticate! }.should_not change(Subject, :count).by 1
+      subject.result.should eq :failure   
+      subject.message.should eq 'Authentication Error - Automatic provisioning is disabled in configuration'
     end
 
     it 'when the subject exists ensure it is updated has a session record created and returns success' do
