@@ -7,5 +7,4 @@ module FederatedRails
 
   require 'federated_rails/federation_strategy'
   require 'federated_rails/development_strategy'
-  require 'federated_rails/version'
 end

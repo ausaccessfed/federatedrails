@@ -1,5 +1,3 @@
-require 'federated_rails/version'
-
 # Provide a simple gemspec so you can easily use your enginex
 # project in your rails apps through git.
 Gem::Specification.new do |s|
@@ -9,6 +7,6 @@ Gem::Specification.new do |s|
   s.email = %q{bradleybeddoes@gmail.com}
   s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
   
-  s.version = FederatedRails::VERSION
+  s.version = 0.1.0
 
 end
