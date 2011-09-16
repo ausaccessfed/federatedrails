@@ -1,3 +1,5 @@
+require 'federated_rails/version'
+
 # Provide a simple gemspec so you can easily use your enginex
 # project in your rails apps through git.
 Gem::Specification.new do |s|
