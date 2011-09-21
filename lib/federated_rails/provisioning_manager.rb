@@ -19,9 +19,9 @@ module FederatedRails
 
     def retrieve_federated_value(attr)
       if Rails.application.config.federation.attributes
-        env[ Rails.application.config.federation.mapping[attr][:env] ]
+        request.env[ Rails.application.config.federation.mapping[attr][:env] ]
       else
-        env[ Rails.application.config.federation.mapping[attr][:header] ]
+        request.env[ Rails.application.config.federation.mapping[attr][:header] ]
       end
     end
 
