@@ -7,6 +7,5 @@ Gem::Specification.new do |s|
   s.email = %q{bradleybeddoes@gmail.com}
   s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile"]
   
-  s.version = "0.1.0"
-
+  s.version = "0.2.0"
 end

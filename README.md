@@ -1,4 +1,4 @@
-# FederatedRails - 0.1
+# FederatedRails
 
 Allows Ruby on Rails applications to easily integrate to federated authentication sources particuarly those served by Shibboleth service providers.
 
