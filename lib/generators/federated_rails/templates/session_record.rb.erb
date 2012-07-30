@@ -2,4 +2,5 @@ class SessionRecord < ActiveRecord::Base
 	belongs_to :<%= model.downcase %>
 
 	validates_presence_of :credential, :remote_host, :user_agent
+  attr_accessible :credential, :remote_host, :user_agent
 end

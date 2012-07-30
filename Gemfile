@@ -14,6 +14,3 @@ group :test, :development do
   gem "rspec-rails", "~> 2.6"
   gem "factory_girl_rails", "~> 1.1"
 end
-
-# Use unicorn as the web server
-gem 'unicorn'

@@ -3,8 +3,9 @@ class <%= model %> < ActiveRecord::Base
 
 	validates_presence_of :principal
 	validates_uniqueness_of :principal
-
 	validates_associated :session_records
+  
+  attr_accessible :administrator, :subject
 
 	def to_s
 		"<%= model.downcase %> [#{self.id}, #{self.principal}]"

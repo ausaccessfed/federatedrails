@@ -10,8 +10,7 @@
   <%= hidden_field_tag(:principal, 'https://idp.one.edu.au/idp/shibboleth!-!d2404817-6fb9-4165-90d8-1') %>
   <%= hidden_field_tag(:credential, 'fake-sessionid-webform') %>
   
-  <%= hidden_field :attributes, :givenName, :value => 'Fred' %>
-  <%= hidden_field :attributes, :surname, :value => 'Bloggs' %>
+  <%= hidden_field :attributes, :cn, :value => 'Fred Bloggs' %>
   <%= hidden_field :attributes, :email, :value => 'fredbloggs@one.edu.au' %>
   <%= hidden_field :attributes, :entityID, :value => 'https://idp.one.edu.au/idp/shibboleth' %>
   <%= hidden_field :attributes, :homeOrganization, :value => 'one.edu.au' %>
@@ -26,8 +25,7 @@
   <%= hidden_field_tag(:principal, 'https://idp.one.edu.au/idp/shibboleth!-!d2404817-6fb9-4165-90d8-2') %>
   <%= hidden_field_tag(:credential, 'fake-sessionid-webform') %>
   
-  <%= hidden_field :attributes, :givenName, :value => 'Joe' %>
-  <%= hidden_field :attributes, :surname, :value => 'Schmoe' %>
+  <%= hidden_field :attributes, :cn, :value => 'Joe Schmoe' %>
   <%= hidden_field :attributes, :email, :value => 'joeschmoe@one.edu.au' %>
   <%= hidden_field :attributes, :entityID, :value => 'https://idp.one.edu.au/idp/shibboleth' %>
   <%= hidden_field :attributes, :homeOrganization, :value => 'one.edu.au' %>
@@ -42,8 +40,7 @@
   <%= hidden_field_tag(:principal, 'https://idp.one.edu.au/idp/shibboleth!-!d2404817-6fb9-4165-90d8-3') %>
   <%= hidden_field_tag(:credential, 'fake-sessionid-webform') %>
   
-  <%= hidden_field :attributes, :givenName, :value => 'Max' %>
-  <%= hidden_field :attributes, :surname, :value => 'Musterman' %>
+  <%= hidden_field :attributes, :cn, :value => 'Max Mustermann' %>
   <%= hidden_field :attributes, :email, :value => 'maxmustermann@one.edu.au' %>
   <%= hidden_field :attributes, :entityID, :value => 'https://idp.one.edu.au/idp/shibboleth' %>
   <%= hidden_field :attributes, :homeOrganization, :value => 'one.edu.au' %>
