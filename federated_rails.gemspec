@@ -1,8 +1,8 @@
 # Provide a simple gemspec so you can easily use your enginex
 # project in your rails apps through git.
 Gem::Specification.new do |s|
-  s.name        = "federatedrails"
-  s.version     = "0.2.1"
+  s.name        = "federated_rails"
+  s.version     = "0.2.2"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Bradley Beddoes"]
   s.email       = ["bradleybeddoes@gmail.com"]

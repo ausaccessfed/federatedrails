@@ -28,7 +28,7 @@ class FederatedRails::AuthController < ApplicationController
     if Rails.application.config.federation.federationactive
       warden.authenticate!(:federation_login)
       
-      uri = session[:security_manager_return_to] ||= url_for root_path
+      uri = session[:security_manager_return_to] ||= url_for(root_path)
       logger.info "Redirecting principal #{security_manager.subject.principal} to #{uri.inspect}"
       redirect_to uri
     else
@@ -42,7 +42,7 @@ class FederatedRails::AuthController < ApplicationController
     if Rails.application.config.federation.developmentactive
       warden.authenticate!(:development_login)
       
-      uri = session[:security_manager_return_to] ||= '/'
+      uri = session[:security_manager_return_to] ||= url_for(root_path)
       logger.info "Redirecting principal #{security_manager.subject.principal} to #{uri.inspect}"
       redirect_to uri
     else
