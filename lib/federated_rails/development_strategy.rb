@@ -19,7 +19,7 @@ module FederatedRails
           return fail! 'Authentication Error - Development environment did not supply session ID'
         end
 
-        subject = host_subject.find_or_initialize_by_principal(params[:principal])
+        subject = host_subject.find_or_initialize_by(principal: params[:principal])
         
         if subject.new_record?
           unless Rails.application.config.federation.autoprovision
