@@ -1,16 +1,11 @@
 source "http://rubygems.org"
 
-gem "rails", "3.0.9"
+gem "rails", "4.0.2"
 gem "sqlite3"
 
-gem "rails_warden", "~> 0.5.5"
-
-group :development do
-  gem "bundler", "~> 1.0.0"
-  gem "rcov", ">= 0"
-end
+gem "rails_warden"
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.6"
-  gem "factory_girl_rails", "~> 1.1"
+  gem "rspec-rails"
+  gem "factory_girl_rails"
 end

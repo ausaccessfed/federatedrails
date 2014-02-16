@@ -20,7 +20,7 @@ class FederatedRails::FederationStrategy < Warden::Strategies::Base
         return fail! 'Authentication Error - Federation did not supply session ID'
       end
 
-      subject = host_subject.find_or_initialize_by_principal(principal)
+      subject = host_subject.find_or_initialize_by(principal: principal)
 
       if subject.new_record?
         unless Rails.application.config.federation.autoprovision

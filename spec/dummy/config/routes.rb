@@ -1,5 +1,6 @@
 Dummy::Application.routes.draw do
 
-  match '/example', :to => 'example#index'
+  root 'example#index'
+  get '/example', :to => 'example#index'
 
 end

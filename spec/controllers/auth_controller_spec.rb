@@ -47,7 +47,7 @@ describe FederatedRails::AuthController do
 
       get :federation_login
       response.code.should eq '403'
-      response.should render_template('loginerror')
+      response.should render_template('_loginerror')
     end
     
     it 'specifies HTTP 200 response and sets location to app root on success' do
@@ -91,7 +91,7 @@ describe FederatedRails::AuthController do
 
       get :development_login
       response.code.should eq '403'
-      response.should render_template('loginerror') 
+      response.should render_template('_loginerror') 
     end
 
     it 'specifies HTTP 200 response and sets location to app root on success' do 
