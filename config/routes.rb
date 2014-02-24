@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/logout', :to => 'auth#logout', :as => :logout
     get '/loginerror', :to => 'auth#unauthenticated'
     get '/auth/federation', :to => 'auth#federation_login'
-    get '/auth/development', :to => 'auth#development_login'
+    post '/auth/development', :to => 'auth#development_login'
   end
 
 end
