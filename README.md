@@ -88,7 +88,7 @@ def session_record_params
 end
 ```
 
-#### Session Subject
+#### Subject
 
 ```
 private
