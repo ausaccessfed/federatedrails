@@ -8,4 +8,5 @@ gem "rails_warden"
 group :test, :development do
   gem "rspec-rails", '~> 2.14'
   gem "factory_girl_rails"
+  gem 'test-unit'
 end

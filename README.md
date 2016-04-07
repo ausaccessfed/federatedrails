@@ -14,8 +14,8 @@ Concepts
 Demonstration
 -------------
 To get started a *very* basic sample app is provided at spec/dummy.
- 
-    bundler exec unicorn 
+
+    bundler exec unicorn
 
 to try it out.
 
@@ -29,7 +29,7 @@ Clone the repository to your local disk and in your Gemfile add:
 
 		gem 'federated_rails', '0.1.0', :path => "yourpath/federated_rails"
 
-Alternatively use the bundler git syntax. 
+Alternatively use the bundler git syntax.
 
 Once this is done execute the supplied generator
 
@@ -40,10 +40,10 @@ Subject should be the name of your subject class you can change this to say User
 You'll then need to add
 
     acts_as_federated
-    
+
 to your application_controller.rb. This will authenticate all controller requests except supplied by the engine. To disable use:
 
-    skip_before_filter :ensure_valid_subject 
+    skip_before_filter :ensure_valid_subject
 
 Configuration
 -------------
@@ -71,6 +71,34 @@ security_manager is available to your controllers and views to provide details a
 
 provisioning_manager allows you to modify what happens when a Subject is created or how it is updated when they subsequently visit your application.
 
+Integrating Strong Parameters with your Controllers
+---------------------------------
+Since the `attr_accessor` method has been extracted out of Rails 4.0+ we recommend that you use strong parameters in your controllers when interacting with the `subject` and `session_record` models.
+
+These snippets should be a useful starting point, but you may need to adapt this for your use case.
+
+
+#### Session Record
+
+```
+private
+
+def session_record_params
+  params.require(:subject).permit(:credential, :remote_host, :user_agent)
+end
+```
+
+#### Subject
+
+```
+private
+
+def subject_params
+  params.require(:subject).permit(:administrator, :subject)
+end
+
+```
+
 Contributing
 ------------
 All contributions welcome. Simply fork and send a pull request when you have something new or log an issue.
@@ -82,4 +110,3 @@ Requests for additional information to go along with this documentation are also
 Credits
 -------
 FederatedRails was written by Bradley Beddoes on behalf of the Australian Access Federation.
-
