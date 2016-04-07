@@ -1,9 +1,9 @@
 require "spec_helper"
 
-describe FederatedRails::AuthController do
+describe FederatedRails::AuthController, type: :controller do
 
   describe 'login' do
-    
+
     it 'specifies HTTP 200 response and renders the login view when when autologin is true' do
       Rails.application.config.federation.automatelogin = false
       get :login
@@ -21,8 +21,8 @@ describe FederatedRails::AuthController do
 
   end
 
-  describe 'logout' do 
-    
+  describe 'logout' do
+
     it 'specifies HTTP 200 response and sets location to app root' do
       subject = FactoryGirl.build :subject
       warden = double(Warden)
@@ -49,10 +49,10 @@ describe FederatedRails::AuthController do
       response.code.should eq '403'
       response.should render_template('_loginerror')
     end
-    
+
     it 'specifies HTTP 200 response and sets location to app root on success' do
       Rails.application.config.federation.federationactive = true
-      
+
       subject = FactoryGirl.build :subject
       warden = double(Warden)
       warden.stub(:authenticate!) { }
@@ -67,7 +67,7 @@ describe FederatedRails::AuthController do
 
     it 'specifies HTTP 200 response and sets location to stored uri on success' do
       Rails.application.config.federation.federationactive = true
-      
+
       subject = FactoryGirl.build :subject
       warden = double(Warden)
       warden.stub(:authenticate!) { }
@@ -81,22 +81,22 @@ describe FederatedRails::AuthController do
       response.code.should eq '302'
       response.location.should eq 'http://test.host/test/location'
     end
-  
+
   end
 
   describe 'development_login' do
-    
+
     it 'renders to the login error partial and sets 403 HTTP response when development is disabled' do
       Rails.application.config.federation.developmentactive = false
 
       get :development_login
       response.code.should eq '403'
-      response.should render_template('_loginerror') 
+      response.should render_template('_loginerror')
     end
 
-    it 'specifies HTTP 200 response and sets location to app root on success' do 
+    it 'specifies HTTP 200 response and sets location to app root on success' do
       Rails.application.config.federation.developmentactive = true
-      
+
       subject = FactoryGirl.build :subject
       warden = double(Warden)
       warden.stub(:authenticate!) { }
@@ -109,9 +109,9 @@ describe FederatedRails::AuthController do
       response.location.should eq 'http://test.host/'
     end
 
-    it 'specifies HTTP 200 response and sets location to stored uri on success' do 
+    it 'specifies HTTP 200 response and sets location to stored uri on success' do
       Rails.application.config.federation.developmentactive = true
-      
+
       subject = FactoryGirl.build :subject
       warden = double(Warden)
       warden.stub(:authenticate!) { }
