@@ -23,7 +23,7 @@ describe FederatedRails::DevelopmentStrategy, type: :request do
     it 'when no principal is provided via form authentication fails' do
       Rails.application.config.federation.developmentactive = true
       warden = double Warden
-      warden.stub(:fail) { |msg| puts msg }
+      allow(warden).to receive(:fail) { |msg| puts msg }
 
       # This is simply to setup a request/response environment for use within the strategy
       # Used for same purpose in all examples
@@ -37,7 +37,7 @@ describe FederatedRails::DevelopmentStrategy, type: :request do
     it 'when no credential is provided via the federation authentication fails' do
       Rails.application.config.federation.developmentactive = true
       warden = double Warden
-      warden.stub(:fail) { |msg| puts msg }
+      allow(warden).to receive(:fail) { |msg| puts msg }
 
       get "/login", { :principal => 'http://test.host/idp!http://test.host/sp!1234' }
 
@@ -52,7 +52,7 @@ describe FederatedRails::DevelopmentStrategy, type: :request do
 
       user = FactoryGirl.create :subject
       get "/login", { :principal => 'http://test.host/idp!http://test.host/sp!1234', :credential => '12345678' }
-      Subject.any_instance.stub(:save).and_return false
+      allow_any_instance_of(Subject).to receive(:save).and_return false
 
       subject.authenticate!
       expect(subject.result).to eq :failure

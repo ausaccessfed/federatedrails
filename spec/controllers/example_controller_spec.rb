@@ -6,7 +6,7 @@ describe ExampleController, type: :controller  do
 
     it 'specifies HTTP 302 response and sets location AuthController login when unauthenticated' do
       warden = double(Warden)
-      warden.stub(:authenticated?) { false }
+      allow(warden).to receive(:authenticated?) { false }
       request.env['warden'] = warden
 
       get :index
@@ -17,8 +17,8 @@ describe ExampleController, type: :controller  do
     it 'specifies HTTP 200 and renders the index view when authenticated' do
       subject = FactoryGirl.build :subject
       warden = double(Warden)
-      warden.stub(:authenticated?) { true }
-      warden.stub(:user) { subject }
+      allow(warden).to receive(:authenticated?) { true }
+      allow(warden).to receive(:user) { subject }
       request.env['warden'] = warden
 
       get :index

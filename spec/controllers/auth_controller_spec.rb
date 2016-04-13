@@ -26,9 +26,9 @@ describe FederatedRails::AuthController, type: :controller do
     it 'specifies HTTP 200 response and sets location to app root' do
       subject = FactoryGirl.build :subject
       warden = double(Warden)
-      warden.stub(:logout) { subject = 'terminated' }
-      warden.stub(:user) { subject }
-      warden.stub(:subject) { subject }
+      allow(warden).to receive(:logout) { subject = 'terminated' }
+      allow(warden).to receive(:user) { subject }
+      allow(warden).to receive(:subject) { subject }
       request.env['warden'] = warden
 
       expect(warden.subject).to eq subject
@@ -55,9 +55,9 @@ describe FederatedRails::AuthController, type: :controller do
 
       subject = FactoryGirl.build :subject
       warden = double(Warden)
-      warden.stub(:authenticate!) { }
-      warden.stub(:user) { subject }
-      warden.stub(:subject) { subject }
+      allow(warden).to receive(:authenticate!) { }
+      allow(warden).to receive(:user) { subject }
+      allow(warden).to receive(:subject) { subject }
       request.env['warden'] = warden
 
       get :federation_login
@@ -70,9 +70,9 @@ describe FederatedRails::AuthController, type: :controller do
 
       subject = FactoryGirl.build :subject
       warden = double(Warden)
-      warden.stub(:authenticate!) { }
-      warden.stub(:user) { subject }
-      warden.stub(:subject) { subject }
+      allow(warden).to receive(:authenticate!) { }
+      allow(warden).to receive(:user) { subject }
+      allow(warden).to receive(:subject) { subject }
       request.env['warden'] = warden
 
       session[:security_manager_return_to] = '/test/location'
@@ -99,9 +99,9 @@ describe FederatedRails::AuthController, type: :controller do
 
       subject = FactoryGirl.build :subject
       warden = double(Warden)
-      warden.stub(:authenticate!) { }
-      warden.stub(:user) { subject }
-      warden.stub(:subject) { subject }
+      allow(warden).to receive(:authenticate!) { }
+      allow(warden).to receive(:user) { subject }
+      allow(warden).to receive(:subject) { subject }
       request.env['warden'] = warden
 
       get :development_login
@@ -114,9 +114,9 @@ describe FederatedRails::AuthController, type: :controller do
 
       subject = FactoryGirl.build :subject
       warden = double(Warden)
-      warden.stub(:authenticate!) { }
-      warden.stub(:user) { subject }
-      warden.stub(:subject) { subject }
+      allow(warden).to receive(:authenticate!) { }
+      allow(warden).to receive(:user) { subject }
+      allow(warden).to receive(:subject) { subject }
       request.env['warden'] = warden
 
       session[:security_manager_return_to] = '/test/location'

@@ -24,7 +24,7 @@ describe FederatedRails::FederationStrategy, type: :request do
       Rails.application.config.federation.federationactive = true
       Rails.application.config.federation.attributes = false
       warden = double Warden
-      warden.stub(:fail) { |msg| puts msg }
+      allow(warden).to receive(:fail) { |msg| puts msg }
 
       get "/login"
 
@@ -37,7 +37,7 @@ describe FederatedRails::FederationStrategy, type: :request do
       Rails.application.config.federation.federationactive = true
       Rails.application.config.federation.attributes = false
       warden = double Warden
-      warden.stub(:fail) { |msg| puts msg }
+      allow(warden).to receive(:fail) { |msg| puts msg }
 
       get "/login", nil, { 'HTTP_PERSISTENT_ID' => 'http://test.host/idp!http://test.host/sp!1234' }
 
@@ -53,7 +53,7 @@ describe FederatedRails::FederationStrategy, type: :request do
 
       user = FactoryGirl.create :subject
       get "/login", nil, { 'HTTP_PERSISTENT_ID' => 'http://test.host/idp!http://test.host/sp!1234', 'HTTP_SHIB_SESSION_ID' => '12345678' }
-      Subject.any_instance.stub(:save).and_return false
+      allow_any_instance_of(Subject).to receive(:save).and_return false
 
       subject.authenticate!
       expect(subject.result).to eq :failure
