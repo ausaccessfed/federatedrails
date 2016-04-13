@@ -70,7 +70,7 @@ describe FederatedRails::DevelopmentStrategy, type: :request do
                         'HTTP_USER_AGENT' => 'test browser' }
 
       provisioned = false
-      subject.stub(:provision_development).and_return { provisioned = true }
+      allow(subject).to receive(:provision_development) { provisioned = true }
 
       lambda {
         lambda { subject.authenticate! }.should change(SessionRecord, :count).by 1

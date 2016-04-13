@@ -72,7 +72,7 @@ describe FederatedRails::FederationStrategy, type: :request do
                             'HTTP_USER_AGENT' => 'test browser' }
 
       provisioned = false
-      subject.stub(:provision).and_return { provisioned = true }
+      allow(subject).to receive(:provision) { provisioned = true }
 
       lambda {
         lambda { subject.authenticate! }.should change(SessionRecord, :count).by 1
