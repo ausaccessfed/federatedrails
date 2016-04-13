@@ -10,8 +10,8 @@ describe ExampleController, type: :controller  do
       request.env['warden'] = warden
 
       get :index
-      response.code.should eq '302'
-      subject.should redirect_to :controller => 'federated_rails/auth', :action => 'login'
+      expect(response.code).to eq '302'
+      expect(subject).to redirect_to :controller => 'federated_rails/auth', :action => 'login'
     end
 
     it 'specifies HTTP 200 and renders the index view when authenticated' do
@@ -22,8 +22,8 @@ describe ExampleController, type: :controller  do
       request.env['warden'] = warden
 
       get :index
-      response.code.should eq '200'
-      response.should render_template('index')
+      expect(response.code).to eq '200'
+      expect(response).to render_template('index')
     end
 
   end
