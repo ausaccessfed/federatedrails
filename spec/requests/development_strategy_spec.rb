@@ -111,7 +111,7 @@ describe FederatedRails::DevelopmentStrategy, type: :request do
 
       user = FactoryGirl.create :subject
       updated = false
-      subject.stub(:update_development).and_return { updated = true }
+      allow(subject).to receive(:update_development) { updated = true }
 
       lambda {
         lambda { subject.authenticate! }.should change(SessionRecord, :count).by 1
