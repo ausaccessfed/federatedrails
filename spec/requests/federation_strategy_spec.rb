@@ -97,7 +97,7 @@ describe FederatedRails::FederationStrategy, type: :request do
                             'HTTP_X_FORWARDED_FOR' => 'http://test.host',
                             'HTTP_USER_AGENT' => 'test browser' }
 
-      lambda { subject.authenticate! }.should_not change(Subject, :count).by 1
+      lambda { subject.authenticate! }.should_not change(Subject, :count)
       subject.result.should eq :failure
       subject.message.should eq 'Authentication Error - Automatic provisioning is disabled in configuration'
     end
