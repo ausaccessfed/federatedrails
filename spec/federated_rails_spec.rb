@@ -4,7 +4,7 @@ require 'rails'
 describe FederatedRails do
 
   it "is a valid rails module" do
-    FederatedRails.should be_a(Module)
+    expect(FederatedRails).to be_a(Module)
   end
 
 end
